@@ -1,0 +1,13 @@
+ja:
+  activemodel:
+    attributes:
+      session:
+        code: ユーザーID
+        password: パスワード
+
+  errors:
+    # テンプレート
+    format: '%{attribute}%{message}'
+    # エラー毎のメッセージ
+    messages:
+      blank: 'を入力してください'
