@@ -1,0 +1,16 @@
+<h1>写真アップロード</h1>
+
+<div>
+  <%= form_with model: @photo, local: true do |f| %>
+    <div>
+      <%= f.label :title, 'タイトル' %>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+        <%= f.label :image, '画像ファイル' %>
+        <%= f.file_field :image %>
+    </div>
+    <%= f.submit 'アップロード' %>
+    <%= link_to 'キャンセル', photos_path %>
+  <% end %>
+</div>

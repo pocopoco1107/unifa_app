@@ -1,3 +1,8 @@
+  <%= link_to '写真をアップロード', new_photo_path %>
+
   <div>
-    photo一覧
+    <% @photos.each do |photo| %>
+      <p><%= photo.title %></p>
+      <%= image_tag photo.image if photo.image.attached? %>
+    <% end %>
   </div>
