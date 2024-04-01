@@ -1,3 +1,21 @@
-  <div>
-    photo一覧
+  <h1>写真一覧</h1>
+  
+  <%= link_to '写真をアップロード', new_photo_path %>
+
+  <style>
+    .photos-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+  </style>
+  <div class="photos-container">
+    <% @photos.each do |photo| %>
+      <div class="photo-item">
+        <p><%= photo.title %></p>
+        <%= image_tag photo.image.variant(:display) if photo.image.attached? %>
+      </div>
+    <% end %>
   </div>

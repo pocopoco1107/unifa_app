@@ -5,9 +5,16 @@ ja:
         code: ユーザーID
         password: パスワード
 
+  activerecord:
+    attributes:
+      photo:
+        title: タイトル
+        image: 画像ファイル
+
   errors:
     # テンプレート
     format: '%{attribute}%{message}'
     # エラー毎のメッセージ
     messages:
       blank: 'を入力してください'
+      too_long: 'は%{count}文字以内で入力してください'

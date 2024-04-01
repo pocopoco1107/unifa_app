@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_many :photos
   validates :code, presence: true, allow_nil: true
   has_secure_password
   validates :password, presence: true, allow_nil: true
