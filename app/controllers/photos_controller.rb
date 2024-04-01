@@ -4,7 +4,7 @@ class PhotosController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @photos = current_user.photos
+    @photos = current_user.photos.order(created_at: :desc) # 新しい順にソート
   end
 
   def new
@@ -13,11 +13,10 @@ class PhotosController < ApplicationController
 
   def create
     @photo = current_user.photos.new(photo_params)
-
     if @photo.save
       redirect_to photos_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

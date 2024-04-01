@@ -2,6 +2,15 @@
 
 <div>
   <%= form_with model: @photo, local: true do |f| %>
+    <% if @photo.errors.any? %>
+      <div class='error-alert'>
+        <ul>
+          <% @photo.errors.full_messages.each do |message| %>
+          <li style='color:red;'><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div>
       <%= f.label :title, 'タイトル' %>
       <%= f.text_field :title %>
