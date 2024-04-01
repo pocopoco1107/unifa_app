@@ -30,6 +30,7 @@ module SessionsManager
 
   # ログアウトする
   def log_out
+    current_user.forget
     reset_session
     @current_user = nil
   end

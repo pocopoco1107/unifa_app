@@ -1,0 +1,5 @@
+<header>
+  <div>
+    <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } if logged_in? %>
+  </div>
+</header>
