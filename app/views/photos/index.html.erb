@@ -1,6 +1,21 @@
   <h1>写真一覧</h1>
-  
-  <%= link_to '写真をアップロード', new_photo_path %>
+
+  <div>
+    <% oauth_url = URI::HTTPS.build(
+      host: URI(Constants::OAUTH_CONFIG[:auth_base_url]).host,
+      path: '/oauth/authorize',
+      query: {
+        response_type: 'code',
+        client_id: Constants::OAUTH_CONFIG[:client_id],
+        redirect_uri: Constants::OAUTH_CONFIG[:redirect_uri],
+        scope: 'write_tweet'
+      }.to_query
+    ).to_s %>
+    <%= link_to 'OAuthで認証', oauth_url, target: '_blank' %>
+  </div>
+  <div>
+    <%= link_to '写真をアップロード', new_photo_path %>
+  </div>
 
   <style>
     .photos-container {
