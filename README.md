@@ -1,24 +1,30 @@
-# README
+# 写真管理アプリ（ツイート機能付き）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 開発環境情報
+- Ruby: 3.1.2
+- Rails: 7.1.3.2
+- DBはsqlite3を使用
 
-Things you may want to cover:
+## アプリ実行手順
 
-* Ruby version
+#### DBセットアップ手順
+- Migration実行コマンド
+  - `bin/rails db:migrate`
+- Seed実行コマンド
+  - `bin/rails db:seed`  
 
-* System dependencies
+#### アプリケーション起動手順
+- サーバー起動コマンド
+  - `bin/rails s`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#### アクセス手順
+- アクセスURL
+  - `http://localhost:3000`  
+  ※アクセス後に/loginへリダイレクトされます。 
+  ※アクセスできない場合はブラウザのcookieを削除してみてください。
+- ログイン
+  - Seedにて作成される以下の初期ユーザーでログイン可能です。  
+  ```
+  ユーザーID: user1  
+  パスワード: password  
+  ```
