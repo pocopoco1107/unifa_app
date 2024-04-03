@@ -1,0 +1,45 @@
+  <h1>写真一覧</h1>
+
+  <div>
+    <% oauth_url = URI::HTTP.build(
+      host: URI(Constants::OAUTH_CONFIG[:auth_base_url]).host,
+      path: '/oauth/authorize',
+      query: {
+        response_type: 'code',
+        client_id: Constants::OAUTH_CONFIG[:client_id],
+        redirect_uri: Constants::OAUTH_CONFIG[:redirect_uri],
+        scope: 'write_tweet'
+      }.to_query
+    ).to_s %>
+    <%= link_to 'OAuthで認証', oauth_url, target: '_blank' %>
+  </div>
+  <div>
+    <%= link_to '写真をアップロード', new_photo_path %>
+  </div>
+
+  <style>
+    .photos-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+  </style>
+  <div class="photos-container">
+    <% @photos.each do |photo| %>
+      <div class="photo-item">
+        <p><%= photo.title %></p>
+        <%= image_tag photo.image.variant(:display) if photo.image.attached? %>
+        <% if session[:oauth_access_token].present? %>
+          <%= button_to "ツイートする", tweet_photo_path(photo), method: :post %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <% if @tweet_responce %>
+      <p>ツイートのレスポンス</p>
+      <%= @tweet_responce %>
+    <% end %>
+  </div>
